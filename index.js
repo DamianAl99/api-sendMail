@@ -35,10 +35,8 @@ async function sendMail(user, callback){
         port: 587,
         secure: false,
         auth: {
-            // user: process.env.USERMAIL,
-            // pass: process.env.PASSMAIL
-            user: "webdamianal@gmail.com",
-            pass: "vreiyeoxwhrhkvbw"
+            user: process.env.USERMAIL,
+            pass: process.env.PASSMAIL
         },
         tls: {
             rejectUnauthorized: false
