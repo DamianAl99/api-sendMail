@@ -1,7 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const nodemailer = require("nodemailer");
-const { error } = require("console");
+const dotenv = require('dotenv').config();
 
 //CONF
 const port = 4000 | process.env.PORT;
@@ -29,6 +29,7 @@ app.post("/send", (req, res)=>{
 
 async function sendMail(user, callback){
     const {mailUser, message} = user;
+    console.log(process.env.USERMAIL)
     if(verificarMessages(mailUser, message)){ throw true}
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -56,10 +57,10 @@ async function sendMail(user, callback){
 }
 
 const verificarMessages = (mail, messages) => {
-    if(mail.include("<") || mail.include(">") || mail.include("</")) {
+    if(mail.includes("<") || mail.includes(">") || mail.includes("</")) {
         return true;
     }
-    if(message.include("<") || message.include(">") || message.include("</")) {
+    if(messages.includes("<") || messages.includes(">") || messages.includes("</")) {
         return true;
     }
     return false;
