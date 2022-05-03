@@ -14,6 +14,10 @@ app.listen(port, () => {
     console.log("escuchando en el puerto "+port)
 })
 
+app.get("/", (req,res)=>{
+    res.status(200).json({"Hola": "esto es un mensaje"})
+})
+
 app.post("/send", (req, res)=>{
     let user = req.body;
 
